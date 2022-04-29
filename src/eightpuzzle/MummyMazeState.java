@@ -46,7 +46,6 @@ public class MummyMazeState extends State implements Cloneable {
     }
 
     public boolean canMoveUp() {
-        System.out.println("Entra no mexer cima");
         if (lineHero == 1 && matrix[lineHero - 1][columnHero] == 'S')
             return true;
         if (lineHero > 1 && matrix[lineHero - 1][columnHero] == ' ' && matrix[lineHero - 2][columnHero] == '.')
@@ -56,7 +55,6 @@ public class MummyMazeState extends State implements Cloneable {
     }
 
     public boolean canMoveRight() {
-        System.out.println("Entra no mexer Direita");
         if (columnHero == 11 && matrix[lineHero][columnHero+1] == 'S')
             return true;
         if (columnHero < 11 && matrix[lineHero][columnHero+1] == ' ' && matrix[lineHero][columnHero+2] == '.')
@@ -66,7 +64,6 @@ public class MummyMazeState extends State implements Cloneable {
     }
 
     public boolean canMoveDown() {
-        System.out.println("Entra no mexer Baixo");
         if (lineHero == 11 && matrix[lineHero + 1][columnHero] == 'S')
             return true;
         if (lineHero < 11 && matrix[lineHero + 1][columnHero] == ' ' && matrix[lineHero + 2][columnHero] == '.')
@@ -76,7 +73,6 @@ public class MummyMazeState extends State implements Cloneable {
     }
 
     public boolean canMoveLeft() {
-        System.out.println("Entra no mexer Esquerda");
         if (columnHero == 1 && matrix[lineHero][columnHero-1] == 'S')
             return true;
         if (columnHero > 1 && matrix[lineHero][columnHero-1] == ' ' && matrix[lineHero][columnHero-2] == '.')
@@ -103,7 +99,7 @@ public class MummyMazeState extends State implements Cloneable {
     }
 
     public void moveRight() {
-        if (lineHero < 11) {
+        if (columnHero < 11) {
             matrix[lineHero][columnHero] = '.';
             matrix[lineHero][columnHero+=2] = 'H';
         } else {
@@ -123,7 +119,7 @@ public class MummyMazeState extends State implements Cloneable {
     }
 
     public void moveLeft() {
-        if (lineHero > 1) {
+        if (columnHero > 1) {
             matrix[lineHero][columnHero] = '.';
             matrix[lineHero][columnHero-=2] = 'H';
         } else {

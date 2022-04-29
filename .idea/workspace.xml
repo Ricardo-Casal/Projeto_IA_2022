@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7a091b84-42a2-4966-937e-8409e68ac26b" name="Default" comment="">
+    <list default="true" id="7a091b84-42a2-4966-937e-8409e68ac26b" name="Default" comment="Commit com boneco a mexer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/eightpuzzle/HeuristicTileDistance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/eightpuzzle/HeuristicTileDistance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/eightpuzzle/HeuristicTilesOutOfPlace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/eightpuzzle/HeuristicTilesOutOfPlace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/eightpuzzle/MummyMazeProblem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/eightpuzzle/MummyMazeProblem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/eightpuzzle/MummyMazeState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/eightpuzzle/MummyMazeState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/searchmethods/BreadthFirstSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/searchmethods/BreadthFirstSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/searchmethods/DepthFirstSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/searchmethods/DepthFirstSearch.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,8 +113,16 @@
       <workItem from="1650997381664" duration="12338000" />
       <workItem from="1651082468399" duration="9326000" />
       <workItem from="1651139899095" duration="424000" />
-      <workItem from="1651218377271" duration="6694000" />
+      <workItem from="1651218377271" duration="7355000" />
     </task>
+    <task id="LOCAL-00001" summary="Commit com boneco a mexer">
+      <created>1651225131130</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1651225131130</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -133,6 +138,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Commit com boneco a mexer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit com boneco a mexer" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

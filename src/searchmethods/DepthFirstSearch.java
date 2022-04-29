@@ -15,7 +15,6 @@ public class DepthFirstSearch extends GraphSearch<NodeLinkedList> {
 
     @Override
     protected Solution graphSearch(Problem problem) {
-        System.out.println("entrei no graph");
         frontier.clear();
         frontier.add(new Node(problem.getInitialState()));
 
@@ -27,7 +26,6 @@ public class DepthFirstSearch extends GraphSearch<NodeLinkedList> {
             }
             List<Action> actions = problem.getActions(state);
             for(Action action : actions){
-                System.out.println("entrei no for");
                 State successor = problem.getSuccessor(state, action);
                 addSuccessorToFrontier(successor, n);
             }
