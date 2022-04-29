@@ -2,20 +2,21 @@ package eightpuzzle;
 
 import agent.Action;
 import agent.State;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 
 public class MummyMazeState extends State implements Cloneable {
 
-    static final char[][] GOAL_MATRIX = {};
-    final int[] linesfinalMatrix = {0, 0, 0, 1, 1, 1, 2, 2, 2};
-    final int[] colsfinalMatrix = {0, 1, 2, 0, 1, 2, 0, 1, 2};
     public static final int SIZE = 3;
     private final char[][] matrix;
     private LinkedList<String> lista = new LinkedList<String>();
     private int lineHero;
     private int columnHero;
+    private int lineExit;
+    private int columnExit;
+
 
     public MummyMazeState(char[][] matrix) {
         this.matrix = new char[matrix.length][matrix.length];
@@ -25,6 +26,10 @@ public class MummyMazeState extends State implements Cloneable {
                 if (this.matrix[i][j] == 'H') {
                     lineHero = i;
                     columnHero = j;
+                }
+                if (this.matrix[i][j] == 'S') {
+                    lineExit = i;
+                    columnExit = j;
                 }
             }
         }
@@ -41,57 +46,43 @@ public class MummyMazeState extends State implements Cloneable {
     }
 
     public boolean canMoveUp() {
-        int lineHeroAuxUp =lineHero-1;
-        int columnHeroAuxUp =columnHero;
-        int lineHeroAuxUpTwice = lineHero-2;
-        int  columnHeroAuxUpTwice = columnHero;
         System.out.println("Entra no mexer cima");
-
-        if (this.matrix[lineHeroAuxUp][columnHeroAuxUp]==' ' && this.matrix[lineHeroAuxUpTwice][columnHeroAuxUpTwice]=='.')
+        if (lineHero == 1 && matrix[lineHero - 1][columnHero] == 'S')
             return true;
-        if (this.matrix[lineHeroAuxUp][columnHeroAuxUp]=='S'){
+        if (lineHero > 1 && matrix[lineHero - 1][columnHero] == ' ' && matrix[lineHero - 2][columnHero] == '.')
             return true;
-        }else return false;
 
+        return false;
     }
 
     public boolean canMoveRight() {
-        int lineHeroAuxUp =lineHero;
-        int columnHeroAuxUp =columnHero+1;
-        int lineHeroAuxUpTwice = lineHero;
-        int  columnHeroAuxUpTwice = columnHero+2;
-        System.out.println("Entra no mexer direita");
-        if (this.matrix[lineHeroAuxUp][columnHeroAuxUp]==' ' && this.matrix[lineHeroAuxUpTwice][columnHeroAuxUpTwice]=='.')
+        System.out.println("Entra no mexer Direita");
+        if (columnHero == 11 && matrix[lineHero][columnHero+1] == 'S')
             return true;
-        if (this.matrix[lineHeroAuxUp][columnHeroAuxUp]=='S'){
+        if (columnHero < 11 && matrix[lineHero][columnHero+1] == ' ' && matrix[lineHero][columnHero+2] == '.')
             return true;
-        }else return false;
+
+        return false;
     }
 
     public boolean canMoveDown() {
-        System.out.println("Entra no mexer baixo");
+        System.out.println("Entra no mexer Baixo");
+        if (lineHero == 11 && matrix[lineHero + 1][columnHero] == 'S')
+            return true;
+        if (lineHero < 11 && matrix[lineHero + 1][columnHero] == ' ' && matrix[lineHero + 2][columnHero] == '.')
+            return true;
 
-        if (this.matrix[lineHero+1][columnHero]==' ' && this.matrix[lineHero+2][columnHero]=='.')
-            return true;
-        if (this.matrix[lineHero+1][columnHero]=='S'){
-            return true;
-        }else return false;
+        return false;
     }
 
     public boolean canMoveLeft() {
-        int lineHeroAuxUp =lineHero;
-        int columnHeroAuxUp =columnHero-1;
-        int lineHeroAuxUpTwice = lineHero;
-        int  columnHeroAuxUpTwice = columnHero-2;
-        System.out.println("Entra no mexer esquerda");
-
-        if (this.matrix[lineHeroAuxUp][columnHeroAuxUp]==' ' && this.matrix[lineHeroAuxUpTwice][columnHeroAuxUpTwice]=='.')
+        System.out.println("Entra no mexer Esquerda");
+        if (columnHero == 1 && matrix[lineHero][columnHero-1] == 'S')
             return true;
-        if (this.matrix[lineHeroAuxUp][columnHeroAuxUp]=='S')
+        if (columnHero > 1 && matrix[lineHero][columnHero-1] == ' ' && matrix[lineHero][columnHero-2] == '.')
             return true;
-        if (this.matrix[lineHeroAuxUp-1][columnHeroAuxUp-1]==' ' && this.matrix[lineHeroAuxUpTwice][columnHeroAuxUpTwice]=='.'){
 
-        }else return false;
+        return false;
     }
 
     /*
@@ -101,58 +92,70 @@ public class MummyMazeState extends State implements Cloneable {
      * state was created whether the operation could be executed or not.
      */
     public void moveUp() {
-        matrix[lineHero][columnHero] = matrix[lineHero-2][columnHero];
-        matrix[lineHero][columnHero] = '.';
+        if (lineHero > 1) {
+            matrix[lineHero][columnHero] = '.';
+            matrix[lineHero -= 2][columnHero] = 'H';
+        } else {
+            matrix[lineHero][columnHero] = '.';
+            matrix[lineHero -= 1][columnHero] = 'H';
+        }
+
     }
 
     public void moveRight() {
-        matrix[lineHero][columnHero] = matrix[lineHero][columnHero+2];
-        matrix[lineHero][columnHero] = '.';
+        if (lineHero < 11) {
+            matrix[lineHero][columnHero] = '.';
+            matrix[lineHero][columnHero+=2] = 'H';
+        } else {
+            matrix[lineHero][columnHero] = '.';
+            matrix[lineHero][columnHero+=1] = 'H';
+        }
     }
 
     public void moveDown() {
-        matrix[lineHero][columnHero] = matrix[lineHero+2][columnHero];
-        matrix[lineHero][columnHero] = '.';
+        if (lineHero < 11) {
+            matrix[lineHero][columnHero] = '.';
+            matrix[lineHero += 2][columnHero] = 'H';
+        } else {
+            matrix[lineHero][columnHero] = '.';
+            matrix[lineHero += 1][columnHero] = 'H';
+        }
     }
 
     public void moveLeft() {
-        matrix[lineHero][columnHero] = matrix[lineHero][columnHero-2];
-        matrix[lineHero][columnHero] = '.';
+        if (lineHero > 1) {
+            matrix[lineHero][columnHero] = '.';
+            matrix[lineHero][columnHero-=2] = 'H';
+        } else {
+            matrix[lineHero][columnHero] = '.';
+            matrix[lineHero][columnHero-=1] = 'H';
+        }
     }
 
-    public double computeTilesOutOfPlace(MummyMazeState finalState) {
+    public double computeTilesOutOfPlace() {
         double h = 0;
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix.length; j++) {
-                if (this.matrix[i][j] != 0) { // Blank is ignored so that the heuristic is admissible
-                    if(this.matrix[i][j]!= finalState.matrix[i][j]){
-                        h++;
-                    }
-                }
-            }
-        }
         return h;
     }
 
-    public double computeTileDistances(MummyMazeState finalState) {
+    public double computeTileDistances() {
         double h = 0;
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix.length; j++) {
-                if (this.matrix[i][j] != 0) { // Blank is ignored so that the heuristic is admissible
-                    h += Math.abs(i - linesfinalMatrix[this.matrix[i][j]])
-                            + Math.abs(j - colsfinalMatrix[this.matrix[i][j]]);
-                }
-            }
-        }
         return h;
     }
 
-    public int getNumLines() {
-        return matrix.length;
+    public int getLineExit() {
+        return lineExit;
     }
 
-    public int getNumColumns() {
-        return matrix[0].length;
+    public int getColumnExit() {
+        return columnExit;
+    }
+
+    public int getLineHero() {
+        return lineHero;
+    }
+
+    public int getColumnHero() {
+        return columnHero;
     }
 
     public int getTileValue(int line, int column) {
@@ -203,6 +206,7 @@ public class MummyMazeState extends State implements Cloneable {
 
 
     }
+
     //Listeners
     private transient ArrayList<MummyMazeListner> listeners = new ArrayList<MummyMazeListner>(3);
 

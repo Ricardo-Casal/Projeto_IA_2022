@@ -11,7 +11,6 @@ public class BreadthFirstSearch extends GraphSearch<NodeLinkedList> {
 
     @Override
     public void addSuccessorToFrontier(State successor, Node parent) {
-        System.out.println("Fiz o breadth fist search add successor to frontier");
         if (!(frontier.containsState(successor) || explored.contains(successor))) {
             frontier.addLast(new Node(successor, parent));
         }
