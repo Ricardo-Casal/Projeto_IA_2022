@@ -140,7 +140,7 @@ public class MainFrame extends JFrame {
     }
 
     public void buttonInitialState_ActionPerformed(ActionEvent e) {
-        JFileChooser fc = new JFileChooser(new java.io.File("."));
+        JFileChooser fc = new JFileChooser(new java.io.File(".\\Niveis"));
         try {
             if (fc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
                 gameArea.setState(agent.readInitialStateFromFile(fc.getSelectedFile()));

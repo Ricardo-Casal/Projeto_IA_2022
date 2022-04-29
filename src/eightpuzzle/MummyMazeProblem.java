@@ -17,13 +17,14 @@ public class MummyMazeProblem extends Problem<MummyMazeState> {
             add(new ActionUp());
             add(new ActionRight());
             add(new ActionLeft());
+            add(new ActionNoMove());
         }};
     }
 
     @Override
     public List<Action<MummyMazeState>> getActions(MummyMazeState state) {
         List<Action<MummyMazeState>> possibleActions = new LinkedList<>();
-
+// if para ver se tem heroi no estado se nao tiver nao da retunr a action vazio
         for (Action action : actions) {
             if (action.isValid(state)) {
                 possibleActions.add(action);

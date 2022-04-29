@@ -16,6 +16,8 @@ public class MummyMazeState extends State implements Cloneable {
     private int columnHero;
     private int lineExit;
     private int columnExit;
+    private int mummyLine;
+    private int mummyColumn;
 
 
     public MummyMazeState(char[][] matrix) {
@@ -30,6 +32,11 @@ public class MummyMazeState extends State implements Cloneable {
                 if (this.matrix[i][j] == 'S') {
                     lineExit = i;
                     columnExit = j;
+                }
+                if (this.matrix[i][j] == 'M') {
+                    mummyLine = i;
+                    mummyColumn = j;
+
                 }
             }
         }
@@ -55,9 +62,9 @@ public class MummyMazeState extends State implements Cloneable {
     }
 
     public boolean canMoveRight() {
-        if (columnHero == 11 && matrix[lineHero][columnHero+1] == 'S')
+        if (columnHero == 11 && matrix[lineHero][columnHero + 1] == 'S')
             return true;
-        if (columnHero < 11 && matrix[lineHero][columnHero+1] == ' ' && matrix[lineHero][columnHero+2] == '.')
+        if (columnHero < 11 && matrix[lineHero][columnHero + 1] == ' ' && matrix[lineHero][columnHero + 2] == '.')
             return true;
 
         return false;
@@ -73,13 +80,18 @@ public class MummyMazeState extends State implements Cloneable {
     }
 
     public boolean canMoveLeft() {
-        if (columnHero == 1 && matrix[lineHero][columnHero-1] == 'S')
+        if (columnHero == 1 && matrix[lineHero][columnHero - 1] == 'S')
             return true;
-        if (columnHero > 1 && matrix[lineHero][columnHero-1] == ' ' && matrix[lineHero][columnHero-2] == '.')
+        if (columnHero > 1 && matrix[lineHero][columnHero - 1] == ' ' && matrix[lineHero][columnHero - 2] == '.')
             return true;
+        return false;
 
+    }
+
+    public boolean dontMove() {
         return false;
     }
+
 
     /*
      * In the next four methods we don't verify if the actions are valid.
@@ -87,6 +99,11 @@ public class MummyMazeState extends State implements Cloneable {
      * Doing the verification in these methods would imply that a clone of the
      * state was created whether the operation could be executed or not.
      */
+
+    public void wontMove(){
+        matrix[lineHero][columnHero]='H';
+
+    }
     public void moveUp() {
         if (lineHero > 1) {
             matrix[lineHero][columnHero] = '.';
@@ -95,17 +112,29 @@ public class MummyMazeState extends State implements Cloneable {
             matrix[lineHero][columnHero] = '.';
             matrix[lineHero -= 1][columnHero] = 'H';
         }
+        if (mummyColumn == columnHero && mummyLine > lineHero) {
+            matrix[mummyLine][mummyColumn] = '.';
+            matrix[mummyLine -= 1][mummyColumn] = 'M';
+        }
+
 
     }
 
     public void moveRight() {
         if (columnHero < 11) {
             matrix[lineHero][columnHero] = '.';
-            matrix[lineHero][columnHero+=2] = 'H';
+            matrix[lineHero][columnHero += 2] = 'H';
         } else {
             matrix[lineHero][columnHero] = '.';
-            matrix[lineHero][columnHero+=1] = 'H';
+            matrix[lineHero][columnHero += 1] = 'H';
         }
+        if (mummyColumn < columnHero && mummyColumn <= 9) {
+            System.out.println(mummyLine + " "+ mummyColumn);
+            matrix[mummyLine][mummyColumn] = '.';
+            matrix[mummyLine][mummyColumn +=2 ] = 'M';
+        }
+
+
     }
 
     public void moveDown() {
@@ -116,17 +145,32 @@ public class MummyMazeState extends State implements Cloneable {
             matrix[lineHero][columnHero] = '.';
             matrix[lineHero += 1][columnHero] = 'H';
         }
+        if (mummyColumn == columnHero && mummyLine < lineHero) {
+            matrix[mummyLine][mummyColumn] = '.';
+            matrix[mummyLine += 1][mummyColumn] = 'M';
+
+        }
+
     }
 
     public void moveLeft() {
         if (columnHero > 1) {
             matrix[lineHero][columnHero] = '.';
-            matrix[lineHero][columnHero-=2] = 'H';
+            matrix[lineHero][columnHero -= 2] = 'H';
         } else {
             matrix[lineHero][columnHero] = '.';
-            matrix[lineHero][columnHero-=1] = 'H';
+            matrix[lineHero][columnHero -= 1] = 'H';
         }
+        if (mummyColumn > columnHero && mummyColumn >= 3) {
+            matrix[mummyLine][mummyColumn] = '.';
+            matrix[mummyLine][mummyColumn -= 1] = 'M';
+        }
+
+
+
+
     }
+
 
     public double computeTilesOutOfPlace() {
         double h = 0;
@@ -152,6 +196,14 @@ public class MummyMazeState extends State implements Cloneable {
 
     public int getColumnHero() {
         return columnHero;
+    }
+
+    public int getMummyLine() {
+        return mummyLine;
+    }
+
+    public int getMummyColumn() {
+        return mummyColumn;
     }
 
     public int getTileValue(int line, int column) {
