@@ -7,6 +7,8 @@ import agent.State;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import eightpuzzle.MummyMazeState;
 import utils.NodeCollection;
 
 public abstract class GraphSearch<L extends NodeCollection> implements SearchMethod {
@@ -47,10 +49,16 @@ public abstract class GraphSearch<L extends NodeCollection> implements SearchMet
             }
             explored.add(state);
             List<Action> actions = problem.getActions(state);
+            System.out.println(((MummyMazeState)state).getLineHero() + " "+((MummyMazeState)state).getColumnHero() );
+            System.out.println(((MummyMazeState)state).getMummyLine() + " "+((MummyMazeState)state).getMummyColumn() );
+            System.out.println("pai\n"+state);
+
             for(Action action : actions){
                 State successor = problem.getSuccessor(state, action);
                 addSuccessorToFrontier(successor, n);
-                System.out.println("Entrei no for da action");
+                System.out.println(((MummyMazeState)successor).getLineHero() + " "+((MummyMazeState)successor).getColumnHero() );
+                System.out.println(((MummyMazeState)successor).getMummyLine() + " "+((MummyMazeState)successor).getMummyColumn() );
+                System.out.println("filho\n"+successor);
             }
             computeStatistics(actions.size());
         }

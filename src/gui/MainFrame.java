@@ -187,7 +187,6 @@ public class MainFrame extends JFrame {
                 buttonStop.setEnabled(true);
                 buttonSolve.setEnabled(false);
                 try {
-                    System.out.println("entrei no try");
                     prepareSearchAlgorithm();
                     MummyMazeProblem problem = new MummyMazeProblem((MummyMazeState) agent.getEnvironment().clone());
                     agent.solveProblem(problem);

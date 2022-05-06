@@ -24,22 +24,13 @@ public class MummyMazeAgent extends Agent<MummyMazeState>{
     }
                  
     public MummyMazeState readInitialStateFromFile(File file) throws IOException {
-        /*LER OS NIVEIS*/
         Scanner scanner = new Scanner(file);
         char[][] charArray = new char[13][13];
         int i=0;
-
         while (scanner.hasNextLine()) {
             charArray[i] = scanner.nextLine().toCharArray();
             i++;
         }
-
-      /*  for (int j = 0; j <13 ; j++) {
-            for (int k = 0; k <13 ; k++) {
-                System.out.print(charArray[j][k]); //IMPRIME A MATRIZ DOS NIVEIS PARA VER SE ESTÁ CORRETO
-            }
-            System.out.println();
-        }*/
         initialEnvironment = new MummyMazeState(charArray);
         resetEnvironment();
         return environment;

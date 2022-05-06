@@ -16,6 +16,6 @@ public class ActionNoMove extends Action<MummyMazeState> {
 
     @Override
     public boolean isValid(MummyMazeState state){
-        return state.dontMove();
+        return true;
     }
 }
