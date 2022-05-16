@@ -2,6 +2,7 @@ package gui;
 
 import agent.Heuristic;
 import agent.Solution;
+import eightpuzzle.Enemy;
 import eightpuzzle.MummyMazeAgent;
 import eightpuzzle.MummyMazeProblem;
 import eightpuzzle.MummyMazeState;
@@ -60,7 +61,13 @@ public class MainFrame extends JFrame {
     private double solutionCost;
 
     private char[][] initialMatrix= new char[13][13];
-    private MummyMazeAgent agent = new MummyMazeAgent(new MummyMazeState(initialMatrix));
+    private LinkedList<Enemy> enemyLinkedList = new LinkedList<>();
+    private Enemy enemy;
+    private int lineHero;
+    private int columnHero;
+    private int lineExit;
+    private int columnExit;
+    private MummyMazeAgent agent;
     private JComboBox comboBoxSearchMethods;
     private JComboBox comboBoxHeuristics;
     private JLabel labelSearchParameter = new JLabel("limit/beam size:");
@@ -85,6 +92,8 @@ public class MainFrame extends JFrame {
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setTitle("Mummy Maze");
+
+        agent= new MummyMazeAgent(new MummyMazeState(initialMatrix,enemyLinkedList,lineHero,columnHero,lineExit,columnExit));
 
         JPanel contentPane = (JPanel) this.getContentPane();
         contentPane.setLayout(new BorderLayout());
@@ -147,6 +156,11 @@ public class MainFrame extends JFrame {
                 buttonSolve.setEnabled(true);
                 buttonShowSolution.setEnabled(false);
                 buttonReset.setEnabled(false);
+
+                /*System.out.println(lineHero);
+                System.out.println(columnHero);
+                System.out.println(columnExit);*/
+
             }
         } catch (IOException e1) {
             e1.printStackTrace(System.err);
