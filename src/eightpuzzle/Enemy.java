@@ -22,6 +22,22 @@ public class Enemy {
         this.temChave = temChave;
     }
 
+    public void setColuna(int coluna) {
+        this.coluna = coluna;
+    }
+
+    public void setLinha(int linha) {
+        this.linha = linha;
+    }
+
+    @Override
+    public String toString() {
+        return "Enemy{" +
+                "coluna=" + coluna +
+                ", linha=" + linha +
+                '}';
+    }
+
     public char getEnemyType() {
         return enemyType;
     }

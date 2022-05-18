@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7a091b84-42a2-4966-937e-8409e68ac26b" name="Default" comment="mumia a mexer 100% funcional, niveis atualizador">
-      <change afterPath="$PROJECT_DIR$/src/eightpuzzle/Enemy.java" afterDir="false" />
+    <list default="true" id="7a091b84-42a2-4966-937e-8409e68ac26b" name="Default" comment="tudo a mexer, nada funcional, passagem de parametros feita, falta valdiar armadilhas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/eightpuzzle/MummyMazeAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/eightpuzzle/MummyMazeAgent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/eightpuzzle/MummyMazeProblem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/eightpuzzle/MummyMazeProblem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/eightpuzzle/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/eightpuzzle/Enemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/eightpuzzle/MummyMazeState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/eightpuzzle/MummyMazeState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/MainFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +122,8 @@
       <workItem from="1652181597033" duration="5013000" />
       <workItem from="1652279913565" duration="978000" />
       <workItem from="1652426231662" duration="8729000" />
-      <workItem from="1652712673538" duration="11214000" />
+      <workItem from="1652712673538" duration="12224000" />
+      <workItem from="1652883093253" duration="2113000" />
     </task>
     <task id="LOCAL-00001" summary="Commit com boneco a mexer">
       <created>1651225131130</created>
@@ -162,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651834544843</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="tudo a mexer, nada funcional, passagem de parametros feita, falta valdiar armadilhas">
+      <created>1652724972658</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1652724972658</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -185,7 +190,8 @@
     <MESSAGE value="Commit com boneco a mexer e mumia branca a mexer parcialmente, pasta Niveis adicionada á pasta Raiz" />
     <MESSAGE value="mumia a mexer 100% funcional" />
     <MESSAGE value="mumia a mexer 100% funcional, niveis atualizador" />
-    <option name="LAST_COMMIT_MESSAGE" value="mumia a mexer 100% funcional, niveis atualizador" />
+    <MESSAGE value="tudo a mexer, nada funcional, passagem de parametros feita, falta valdiar armadilhas" />
+    <option name="LAST_COMMIT_MESSAGE" value="tudo a mexer, nada funcional, passagem de parametros feita, falta valdiar armadilhas" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

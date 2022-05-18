@@ -3,6 +3,8 @@ package eightpuzzle;
 import agent.Action;
 import agent.State;
 
+import javax.crypto.spec.PSource;
+import javax.swing.text.Position;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -24,7 +26,7 @@ public class MummyMazeState extends State implements Cloneable {
     private int scorpionColumn;
     private int linhaArmadilha;
     private int colunaArmadilha;
-    private LinkedList<Enemy>enemyLinkedList = new LinkedList<>();
+    private LinkedList<Enemy>enemyLinkedList;
 
 
     public MummyMazeState(char[][] matrix, LinkedList<Enemy> enemyLinkedList, int lineHero,int columnHero,int lineExit,int columnExit ) {
@@ -34,9 +36,9 @@ public class MummyMazeState extends State implements Cloneable {
         this.lineExit=lineExit;
         this.columnExit = columnExit;
 
-
-
+        this.enemyLinkedList = new LinkedList<>();
         for (Enemy e:enemyLinkedList){
+            System.out.println(e);
             this.enemyLinkedList.add(e.clone());
         }
 
@@ -182,9 +184,11 @@ public class MummyMazeState extends State implements Cloneable {
 
 
         for (int i = 0; i < enemyLinkedList.size(); i++) {
+            System.out.println("aqui"+enemyLinkedList.get(i));
+
             if (enemyLinkedList.get(i).getEnemyType()== 'M') {
-                //mummyLine = enemyLinkedList.get(i).getLinha();
-                //mummyColumn = enemyLinkedList.get(i).getColuna();
+                mummyLine = enemyLinkedList.get(i).getLinha();
+                mummyColumn = enemyLinkedList.get(i).getColuna();
                 for (int j = 0; j < 2; j++) {
                     if (mummyColumn > columnHero) {
                         if (matrix[mummyLine][mummyColumn - 1] == ' ') {
@@ -230,14 +234,18 @@ public class MummyMazeState extends State implements Cloneable {
                             }
                         }
                     }
+                    enemyLinkedList.get(i).setLinha(mummyLine);
+                    enemyLinkedList.get(i).setColuna(mummyColumn);
                     if (matrix[lineHero][columnHero] == 'M') {
                         lineHero = 0;
                         columnHero = 0;
-                        break;
+                        return;
                     }
 
                 }
             }
+
+
             if (enemyLinkedList.get(i).getEnemyType()== 'V') {
                 redMummyLine = enemyLinkedList.get(i).getLinha();
                 redmummycolumn = enemyLinkedList.get(i).getColuna();
@@ -291,23 +299,30 @@ public class MummyMazeState extends State implements Cloneable {
                         }
                     }
 
+                enemyLinkedList.get(i).setLinha(redMummyLine);
+                enemyLinkedList.get(i).setColuna(redmummycolumn);
 
                     // System.out.println(this);
                     if (matrix[lineHero][columnHero] == 'V') {
                         lineHero = 0;
                         columnHero = 0;
-                        break;
+                        return;
+
                     }
 
                 }
             }//-----------------------------------------------
+
             if (enemyLinkedList.get(i).getEnemyType() == 'E') {
+                scorpionLine = enemyLinkedList.get(i).getLinha();
+                scorpionColumn = enemyLinkedList.get(i).getColuna();
                     if (scorpionColumn > columnHero) {
                         if (matrix[scorpionLine][scorpionColumn - 1] == ' ') {
                             matrix[scorpionLine][scorpionColumn] = '.';
-                            if (matrix[scorpionLine][scorpionColumn-=2]=='A'){
+                            System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+ enemyLinkedList.get(i));
+                      //      if (matrix[scorpionLine][scorpionColumn-2]=='A'){
                                 matrix[scorpionLine][scorpionColumn -= 2] = 'E';
-                            }
+                        //    }
 
                         } else if (scorpionLine > lineHero) {
                             if (matrix[scorpionLine - 1][scorpionColumn] == ' ') {
@@ -350,12 +365,13 @@ public class MummyMazeState extends State implements Cloneable {
                         }
                     }
 
-
+                enemyLinkedList.get(i).setLinha(scorpionLine);
+                enemyLinkedList.get(i).setColuna(scorpionColumn);
                     // System.out.println(this);
                     if (matrix[lineHero][columnHero] == 'E') {
                         lineHero = 0;
                         columnHero = 0;
-                        break;
+                        return;
                     }
             }
         }
