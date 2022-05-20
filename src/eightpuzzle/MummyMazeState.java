@@ -120,7 +120,9 @@ public class MummyMazeState extends State implements Cloneable {
             matrix[lineHero][columnHero] = '.';
             System.out.println(lineHero + "" + columnHero);
             matrix[lineHero -= 1][columnHero] = 'H';
+            return;
         }
+
 
         moveInimigo();
 
@@ -146,6 +148,7 @@ public class MummyMazeState extends State implements Cloneable {
         } else {
             matrix[lineHero][columnHero] = '.';
             matrix[lineHero][columnHero += 1] = 'H';
+            return;
         }
 
         moveInimigo();
@@ -160,6 +163,7 @@ public class MummyMazeState extends State implements Cloneable {
         } else {
             matrix[lineHero][columnHero] = '.';
             matrix[lineHero += 1][columnHero] = 'H';
+            return;
         }
         moveInimigo();
 
@@ -173,6 +177,7 @@ public class MummyMazeState extends State implements Cloneable {
         } else {
             matrix[lineHero][columnHero] = '.';
             matrix[lineHero][columnHero -= 1] = 'H';
+            return;
         }
         moveInimigo();
     }
@@ -182,6 +187,16 @@ public class MummyMazeState extends State implements Cloneable {
         //System.out.println("tamanho da lista mumias" + enemyLinkedList.size());
         //FOR PARA A MUMIA BRANCA
 
+        /*if mumia tem armadilha
+
+
+
+
+
+
+
+
+            */
 
         for (int i = 0; i < enemyLinkedList.size(); i++) {
             System.out.println("aqui"+enemyLinkedList.get(i));
@@ -249,14 +264,12 @@ public class MummyMazeState extends State implements Cloneable {
             if (enemyLinkedList.get(i).getEnemyType()== 'V') {
                 redMummyLine = enemyLinkedList.get(i).getLinha();
                 redmummycolumn = enemyLinkedList.get(i).getColuna();
-                System.out.println("POS DA MUMIA: "+redMummyLine+"linha/ coluna"+redmummycolumn);
-//                System.out.println("POS MUMIA VERMELHA");
-//                System.out.println(enemyLinkedList.get(i).getLinha());
-//                System.out.println(enemyLinkedList.get(i).getColuna());
                 for (int j = 0; j < 2; j++) {
                     if (redMummyLine > lineHero) {
                         if (matrix[redMummyLine - 1][redmummycolumn] == ' ') {
+
                             matrix[redMummyLine][redmummycolumn] = '.';
+
                             matrix[redMummyLine -=2][redmummycolumn] = 'V';
                         } else if (redmummycolumn > columnHero) {
                             if (matrix[redMummyLine][redmummycolumn - 1] == ' ') {
@@ -301,8 +314,6 @@ public class MummyMazeState extends State implements Cloneable {
 
                 enemyLinkedList.get(i).setLinha(redMummyLine);
                 enemyLinkedList.get(i).setColuna(redmummycolumn);
-
-                    // System.out.println(this);
                     if (matrix[lineHero][columnHero] == 'V') {
                         lineHero = 0;
                         columnHero = 0;

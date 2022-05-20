@@ -157,10 +157,6 @@ public class MainFrame extends JFrame {
                 buttonShowSolution.setEnabled(false);
                 buttonReset.setEnabled(false);
 
-                /*System.out.println(lineHero);
-                System.out.println(columnHero);
-                System.out.println(columnExit);*/
-
             }
         } catch (IOException e1) {
             e1.printStackTrace(System.err);

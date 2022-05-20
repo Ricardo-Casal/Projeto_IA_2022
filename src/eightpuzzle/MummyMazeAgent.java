@@ -18,6 +18,11 @@ public class MummyMazeAgent extends Agent<MummyMazeState> {
     private LinkedList<Enemy> enemyLinkedList;
     private int linhaArmadilha;
     private int colunaArmadilha;
+    private int linhaChave;
+    private int colunaChave;
+    private int linhaPorta;
+    private int colunaPorta;
+
     private int lineHero;
 
     public int getColumnHero() {
@@ -65,6 +70,7 @@ public class MummyMazeAgent extends Agent<MummyMazeState> {
         return environment;
     }
 
+
     public MummyMazeState readInitialStateFromFile(File file) throws IOException {
         Scanner scanner = new Scanner(file);
         char[][] charArray = new char[13][13];
@@ -104,6 +110,14 @@ public class MummyMazeAgent extends Agent<MummyMazeState> {
                 if (charArray[j][k] == 'A') {
                     linhaArmadilha = j;
                     colunaArmadilha = k;
+                }
+                if (charArray[j][k] == 'C') {
+                    linhaChave = j;
+                    colunaChave = k;
+                }
+                if (charArray[j][k] == '=') {
+                    linhaPorta = j;
+                    colunaPorta = k;
                 }
             }
         }
