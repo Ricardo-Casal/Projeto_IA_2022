@@ -6,6 +6,7 @@ public class Enemy {
     private char enemyType;
     private boolean temArmadilha;
     private boolean temChave;
+    private char onTopOf='.';
 
 
     public Enemy( int linha, int coluna, char enemyType) {
@@ -14,12 +15,19 @@ public class Enemy {
         this.enemyType = enemyType;
     }
 
-    public Enemy(int linha, int coluna, char enemyType, boolean temArmadilha, boolean temChave) {
+    public Enemy(int linha, int coluna, char enemyType, char onTopOf) {
         this.coluna = coluna;
         this.linha = linha;
         this.enemyType = enemyType;
-        this.temArmadilha = temArmadilha;
-        this.temChave = temChave;
+        this.onTopOf=onTopOf;
+    }
+
+    public char getOnTopOf() {
+        return onTopOf;
+    }
+
+    public void setOnTopOf(char onTopOf) {
+        this.onTopOf = onTopOf;
     }
 
     public void setColuna(int coluna) {
@@ -38,6 +46,22 @@ public class Enemy {
                 '}';
     }
 
+    public boolean isTemArmadilha() {
+        return temArmadilha;
+    }
+
+    public void setTemArmadilha(boolean temArmadilha) {
+        this.temArmadilha = temArmadilha;
+    }
+
+    public boolean isTemChave() {
+        return temChave;
+    }
+
+    public void setTemChave(boolean temChave) {
+        this.temChave = temChave;
+    }
+
     public char getEnemyType() {
         return enemyType;
     }
@@ -52,6 +76,6 @@ public class Enemy {
 
     @Override
     protected Enemy clone()  {
-        return new Enemy(linha, coluna, enemyType, temArmadilha, temChave);
+        return new Enemy(linha, coluna, enemyType,onTopOf);
     }
 }

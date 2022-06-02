@@ -4,7 +4,6 @@ import agent.Agent;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -16,6 +15,8 @@ public class MummyMazeAgent extends Agent<MummyMazeState> {
     private int columnExit;
     private Enemy enemy;
     private LinkedList<Enemy> enemyLinkedList;
+    private Hero armadilha;
+    private LinkedList<Hero> armadilhaLinkedList;
     private int linhaArmadilha;
     private int colunaArmadilha;
     private int linhaChave;
@@ -75,6 +76,7 @@ public class MummyMazeAgent extends Agent<MummyMazeState> {
         Scanner scanner = new Scanner(file);
         char[][] charArray = new char[13][13];
         enemyLinkedList = new LinkedList<>();
+        armadilhaLinkedList = new LinkedList<>();
         int i = 0;
         while (scanner.hasNextLine()) {
             charArray[i] = scanner.nextLine().toCharArray();
@@ -110,6 +112,10 @@ public class MummyMazeAgent extends Agent<MummyMazeState> {
                 if (charArray[j][k] == 'A') {
                     linhaArmadilha = j;
                     colunaArmadilha = k;
+                    armadilha = new Hero(j,k);
+                    armadilhaLinkedList.add(armadilha);
+
+
                 }
                 if (charArray[j][k] == 'C') {
                     linhaChave = j;

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7a091b84-42a2-4966-937e-8409e68ac26b" name="Default" comment="tudo a mexer, falta matarem-se e ver armadilhas">
+    <list default="true" id="7a091b84-42a2-4966-937e-8409e68ac26b" name="Default" comment="return dos moves caso esteja na saida">
+      <change afterPath="$PROJECT_DIR$/src/eightpuzzle/Hero.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/eightpuzzle/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/eightpuzzle/Enemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/eightpuzzle/MummyMazeAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/eightpuzzle/MummyMazeAgent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/eightpuzzle/MummyMazeState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/eightpuzzle/MummyMazeState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/MainFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +129,13 @@
       <workItem from="1652885480626" duration="1066000" />
       <workItem from="1652892546007" duration="152000" />
       <workItem from="1653030264723" duration="669000" />
-      <workItem from="1653036979870" duration="4177000" />
+      <workItem from="1653036979870" duration="4226000" />
+      <workItem from="1653513571480" duration="3866000" />
+      <workItem from="1653585420106" duration="1276000" />
+      <workItem from="1653605996958" duration="4391000" />
+      <workItem from="1653635479729" duration="17000" />
+      <workItem from="1653643338987" duration="2959000" />
+      <workItem from="1654170111357" duration="3040000" />
     </task>
     <task id="LOCAL-00001" summary="Commit com boneco a mexer">
       <created>1651225131130</created>
@@ -179,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652885659586</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="return dos moves caso esteja na saida">
+      <created>1653041512306</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1653041512306</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,7 +218,8 @@
     <MESSAGE value="mumia a mexer 100% funcional, niveis atualizador" />
     <MESSAGE value="tudo a mexer, nada funcional, passagem de parametros feita, falta valdiar armadilhas" />
     <MESSAGE value="tudo a mexer, falta matarem-se e ver armadilhas" />
-    <option name="LAST_COMMIT_MESSAGE" value="tudo a mexer, falta matarem-se e ver armadilhas" />
+    <MESSAGE value="return dos moves caso esteja na saida" />
+    <option name="LAST_COMMIT_MESSAGE" value="return dos moves caso esteja na saida" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
