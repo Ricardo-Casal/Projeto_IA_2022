@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7a091b84-42a2-4966-937e-8409e68ac26b" name="Default" comment="abre porta fecha porta" />
+    <list default="true" id="7a091b84-42a2-4966-937e-8409e68ac26b" name="Default" comment="abre porta fecha porta">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/eightpuzzle/MummyMazeState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/eightpuzzle/MummyMazeState.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -130,7 +133,7 @@
       <workItem from="1653635479729" duration="17000" />
       <workItem from="1653643338987" duration="2959000" />
       <workItem from="1654170111357" duration="3495000" />
-      <workItem from="1654239900845" duration="9115000" />
+      <workItem from="1654239900845" duration="15526000" />
     </task>
     <task id="LOCAL-00001" summary="Commit com boneco a mexer">
       <created>1651225131130</created>
@@ -202,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654248866883</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="abre porta fecha porta">
+      <created>1654249068747</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1654249068747</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
