@@ -598,7 +598,7 @@ public class MummyMazeState extends State implements Cloneable {
                             enemyLinkedList.remove(i);
                             System.out.println("passou1");
                             i--;
-                            break;
+                            continue;
                         }
                         onTopOf = matrix[scorpionLine][scorpionColumn -= 2];
                         enemyLinkedList.get(i).setOnTopOf(onTopOf);
@@ -614,7 +614,7 @@ public class MummyMazeState extends State implements Cloneable {
                                 enemyLinkedList.remove(i);
                                 System.out.println("passou1");
                                 i--;
-                                break;
+                                continue;
                             }
                             onTopOf = matrix[scorpionLine -= 2][scorpionColumn];
                             enemyLinkedList.get(i).setOnTopOf(onTopOf);
@@ -630,7 +630,7 @@ public class MummyMazeState extends State implements Cloneable {
                                 enemyLinkedList.remove(i);
                                 System.out.println("passou1");
                                 i--;
-                                break;
+                                continue;
                             }
                             onTopOf = matrix[scorpionLine += 2][scorpionColumn];
                             enemyLinkedList.get(i).setOnTopOf(onTopOf);
@@ -647,7 +647,7 @@ public class MummyMazeState extends State implements Cloneable {
                             enemyLinkedList.remove(i);
                             System.out.println("passou1");
                             i--;
-                            break;
+                            continue;
                         }
                         onTopOf = matrix[scorpionLine][scorpionColumn += 2];
                         enemyLinkedList.get(i).setOnTopOf(onTopOf);
@@ -662,7 +662,7 @@ public class MummyMazeState extends State implements Cloneable {
                                 enemyLinkedList.remove(i);
                                 System.out.println("passou1");
                                 i--;
-                                break;
+                                continue;
                             }
                             onTopOf = matrix[scorpionLine -= 2][scorpionColumn];
                             enemyLinkedList.get(i).setOnTopOf(onTopOf);
@@ -678,7 +678,7 @@ public class MummyMazeState extends State implements Cloneable {
                                 enemyLinkedList.remove(i);
                                 System.out.println("passou1");
                                 i--;
-                                break;
+                                continue;
                             }
                             onTopOf = matrix[scorpionLine += 2][scorpionColumn];
                             enemyLinkedList.get(i).setOnTopOf(onTopOf);
@@ -697,7 +697,7 @@ public class MummyMazeState extends State implements Cloneable {
                                 enemyLinkedList.remove(i);
                                 System.out.println("passou1");
                                 i--;
-                                break;
+                                continue;
                             }
                             onTopOf = matrix[scorpionLine -= 2][scorpionColumn];
                             enemyLinkedList.get(i).setOnTopOf(onTopOf);
@@ -713,7 +713,7 @@ public class MummyMazeState extends State implements Cloneable {
                                 enemyLinkedList.remove(i);
                                 System.out.println("passou1");
                                 i--;
-                                break;
+                                continue;
                             }
                             onTopOf = matrix[scorpionLine += 2][scorpionColumn];
                             enemyLinkedList.get(i).setOnTopOf(onTopOf);

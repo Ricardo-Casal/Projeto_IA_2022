@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7a091b84-42a2-4966-937e-8409e68ac26b" name="Default" comment="abre tudo mexe tudo todos abrem portas,morre tudo, falta matar escorpiao">
+    <list default="true" id="7a091b84-42a2-4966-937e-8409e68ac26b" name="Default" comment="escorpiao corrigido, falta fazer metodo para matar quando o as mumias entram numa casa de escorpiao">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/eightpuzzle/MummyMazeState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/eightpuzzle/MummyMazeState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/showSolution/GameArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/showSolution/GameArea.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +134,7 @@
       <workItem from="1653635479729" duration="17000" />
       <workItem from="1653643338987" duration="2959000" />
       <workItem from="1654170111357" duration="3495000" />
-      <workItem from="1654239900845" duration="16792000" />
+      <workItem from="1654239900845" duration="17321000" />
     </task>
     <task id="LOCAL-00001" summary="Commit com boneco a mexer">
       <created>1651225131130</created>
@@ -219,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654257230973</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="escorpiao corrigido, falta fazer metodo para matar quando o as mumias entram numa casa de escorpiao">
+      <created>1654258493450</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1654258493450</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,7 +256,8 @@
     <MESSAGE value="abre porta fecha porta , faz muitos clones de herois por algum motivo" />
     <MESSAGE value="abre porta fecha porta" />
     <MESSAGE value="abre tudo mexe tudo todos abrem portas,morre tudo, falta matar escorpiao" />
-    <option name="LAST_COMMIT_MESSAGE" value="abre tudo mexe tudo todos abrem portas,morre tudo, falta matar escorpiao" />
+    <MESSAGE value="escorpiao corrigido, falta fazer metodo para matar quando o as mumias entram numa casa de escorpiao" />
+    <option name="LAST_COMMIT_MESSAGE" value="escorpiao corrigido, falta fazer metodo para matar quando o as mumias entram numa casa de escorpiao" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
