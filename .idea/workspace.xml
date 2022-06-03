@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7a091b84-42a2-4966-937e-8409e68ac26b" name="Default" comment="abre porta fecha porta , faz muitos clones de herois por algum motivo">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/eightpuzzle/MummyMazeAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/eightpuzzle/MummyMazeAgent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/eightpuzzle/MummyMazeState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/eightpuzzle/MummyMazeState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/MainFrame.java" afterDir="false" />
-    </list>
+    <list default="true" id="7a091b84-42a2-4966-937e-8409e68ac26b" name="Default" comment="abre porta fecha porta" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -135,7 +130,7 @@
       <workItem from="1653635479729" duration="17000" />
       <workItem from="1653643338987" duration="2959000" />
       <workItem from="1654170111357" duration="3495000" />
-      <workItem from="1654239900845" duration="8519000" />
+      <workItem from="1654239900845" duration="9115000" />
     </task>
     <task id="LOCAL-00001" summary="Commit com boneco a mexer">
       <created>1651225131130</created>
@@ -200,7 +195,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654173292926</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="abre porta fecha porta">
+      <created>1654248866883</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1654248866883</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,7 +229,8 @@
     <MESSAGE value="tudo a mexer, falta matarem-se e ver armadilhas" />
     <MESSAGE value="return dos moves caso esteja na saida" />
     <MESSAGE value="abre porta fecha porta , faz muitos clones de herois por algum motivo" />
-    <option name="LAST_COMMIT_MESSAGE" value="abre porta fecha porta , faz muitos clones de herois por algum motivo" />
+    <MESSAGE value="abre porta fecha porta" />
+    <option name="LAST_COMMIT_MESSAGE" value="abre porta fecha porta" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

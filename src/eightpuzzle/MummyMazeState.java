@@ -263,6 +263,7 @@ public class MummyMazeState extends State implements Cloneable {
 
 
     }
+    .LinkedList
 
     public void moveLeft() {
         //char onTopOfHLeft =matrix[lineHero][columnHero];
