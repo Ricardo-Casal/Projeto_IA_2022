@@ -129,7 +129,7 @@ public class MummyMazeAgent extends Agent<MummyMazeState> {
         }
 
 
-        initialEnvironment = new MummyMazeState(charArray, enemyLinkedList, lineHero, columnHero, lineExit, columnExit);
+        initialEnvironment = new MummyMazeState(charArray, enemyLinkedList, lineHero, columnHero,'.', lineExit, columnExit);
         resetEnvironment();
         return environment;
     }

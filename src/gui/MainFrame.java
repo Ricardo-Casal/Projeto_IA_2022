@@ -93,7 +93,7 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setTitle("Mummy Maze");
 
-        agent= new MummyMazeAgent(new MummyMazeState(initialMatrix,enemyLinkedList,lineHero,columnHero,lineExit,columnExit));
+        agent= new MummyMazeAgent(new MummyMazeState(initialMatrix,enemyLinkedList,lineHero,columnHero,'.',lineExit,columnExit));
 
         JPanel contentPane = (JPanel) this.getContentPane();
         contentPane.setLayout(new BorderLayout());

@@ -24,39 +24,38 @@ public class MummyMazeState extends State implements Cloneable {
     private int scorpionColumn;
     private int linhaArmadilha;
     private int colunaArmadilha;
-    private LinkedList<Enemy>enemyLinkedList;
+    private LinkedList<Enemy> enemyLinkedList;
     private LinkedList<Hero> heroLinkedList;
     private Hero hero;
+    private char onTopOfH;
 
 
-    public MummyMazeState(char[][] matrix, LinkedList<Enemy> enemyLinkedList, int lineHero,int columnHero,int lineExit,int columnExit ) {
+    public MummyMazeState(char[][] matrix, LinkedList<Enemy> enemyLinkedList, int lineHero, int columnHero, char onTopOfH, int lineExit, int columnExit) {
         this.matrix = new char[matrix.length][matrix.length];
-        this.lineHero=lineHero;
-        this.columnHero=columnHero;
-        this.lineExit=lineExit;
+        this.lineHero = lineHero;
+        this.columnHero = columnHero;
+        this.lineExit = lineExit;
         this.columnExit = columnExit;
         heroLinkedList = new LinkedList<>();
-
-
-
+//euristica distancia do hero a saida
+        this.onTopOfH = onTopOfH;
 
 
         this.enemyLinkedList = new LinkedList<>();
-        for (Enemy e:enemyLinkedList){
+        for (Enemy e : enemyLinkedList) {
             System.out.println(e);
             this.enemyLinkedList.add(e.clone());
         }
 
 
-
-        for (int j = 0;j < matrix.length; j++) {
+        for (int j = 0; j < matrix.length; j++) {
             for (int k = 0; k < matrix.length; k++) {
                 this.matrix[j][k] = matrix[j][k];
             }
         }
 
 
-   }
+    }
 
     public char[][] getMatrix() {
         return matrix;
@@ -75,9 +74,9 @@ public class MummyMazeState extends State implements Cloneable {
             return true;
         if (lineHero > 1 && matrix[lineHero - 1][columnHero] == ' ' && matrix[lineHero - 2][columnHero] == 'C')
             return true;
-        if (columnHero >1 && matrix[lineHero - 1][columnHero] == '_' && matrix[lineHero - 2][columnHero] == '.')
+        if (columnHero > 1 && matrix[lineHero - 1][columnHero] == '_' && matrix[lineHero - 2][columnHero] == '.')
             return true;
-        if (columnHero >1 && matrix[lineHero - 1][columnHero] == ')' && matrix[lineHero - 2][columnHero] == '.')
+        if (columnHero > 1 && matrix[lineHero - 1][columnHero] == ')' && matrix[lineHero - 2][columnHero] == '.')
             return true;
 
         return false;
@@ -97,6 +96,7 @@ public class MummyMazeState extends State implements Cloneable {
         return false;
     }
 
+
     public boolean canMoveDown() {
         if (lineHero == 11 && matrix[lineHero + 1][columnHero] == 'S')
             return true;
@@ -104,9 +104,9 @@ public class MummyMazeState extends State implements Cloneable {
             return true;
         if (lineHero < 11 && matrix[lineHero + 1][columnHero] == ' ' && matrix[lineHero + 2][columnHero] == 'C')
             return true;
-        if (columnHero < 11 && matrix[lineHero + 1][columnHero] == '_' && matrix[lineHero + 2] [columnHero] == '.')
+        if (columnHero < 11 && matrix[lineHero + 1][columnHero] == '_' && matrix[lineHero + 2][columnHero] == '.')
             return true;
-        if (columnHero < 11 && matrix[lineHero + 1][columnHero] == ')' && matrix[lineHero + 2][columnHero ] == '.')
+        if (columnHero < 11 && matrix[lineHero + 1][columnHero] == ')' && matrix[lineHero + 2][columnHero] == '.')
             return true;
 
         return false;
@@ -121,7 +121,7 @@ public class MummyMazeState extends State implements Cloneable {
             return true;
         if (columnHero > 1 && matrix[lineHero][columnHero - 1] == '_' && matrix[lineHero][columnHero - 2] == '.')
             return true;
-        if (columnHero >1 && matrix[lineHero][columnHero - 1] == ')' && matrix[lineHero][columnHero - 2] == '.')
+        if (columnHero > 1 && matrix[lineHero][columnHero - 1] == ')' && matrix[lineHero][columnHero - 2] == '.')
             return true;
         return false;
 
@@ -142,25 +142,23 @@ public class MummyMazeState extends State implements Cloneable {
 
     public void moveUp() {
         //char onTopOfHuP =matrix[lineHero][columnHero];
-        char onTopOfH =matrix[lineHero][columnHero];
         if (lineHero > 1) {
             matrix[lineHero][columnHero] = onTopOfH;
-            onTopOfH =  matrix[lineHero -= 2][columnHero];
+            onTopOfH = matrix[lineHero -= 2][columnHero];
             matrix[lineHero][columnHero] = 'H';
-            if (onTopOfH=='C'){
+            if (onTopOfH == 'C') {
                 for (int i = 0; i < matrix.length; i++) {
                     for (int j = 0; j < matrix.length; j++) {
-                        if (matrix[i][j]=='='){
-                            matrix[i][j]='_';
-                        }else
-                        if (matrix[i][j]=='_'){
-                            matrix[i][j]='=';
+                        if (matrix[i][j] == '=') {
+                            matrix[i][j] = '_';
+                        } else if (matrix[i][j] == '_') {
+                            matrix[i][j] = '=';
                         }
-                        if (matrix[i][j]=='"'){
-                            matrix[i][j]=')';
+                        if (matrix[i][j] == '"') {
+                            matrix[i][j] = ')';
                         }
-                        if (matrix[i][j]==')'){
-                            matrix[i][j]='"';
+                        if (matrix[i][j] == ')') {
+                            matrix[i][j] = '"';
                         }
 
                     }
@@ -169,7 +167,7 @@ public class MummyMazeState extends State implements Cloneable {
             }
         } else {
             matrix[lineHero][columnHero] = '.';
-           // System.out.println(lineHero + "" + columnHero);
+            // System.out.println(lineHero + "" + columnHero);
             matrix[lineHero -= 1][columnHero] = 'H';
             return;
         }
@@ -178,44 +176,43 @@ public class MummyMazeState extends State implements Cloneable {
         moveInimigo();
 
     }
-/*ANTES DE MOVER FAZER UM IF PARA VER NA COOLUNA E NA LINHA DA MUMIA VER ARMADILHA ANTES DE COLOCAR A MUMIA = -2
-* IF INIMIGO TEM ARMADILHA
-*
-* MATRIZ LINE MUMMY, COLUM MUMMY = 'A'
-* ELSE NAO TEM ARMADLIHA LINE...='A'
-*
-* ANTES DE MOVER PARA  POS -2
-*
-* FAZER OUTRO IF SEPARADO DO DE CIMA
-* IF NA MATRIZ LINE MUMY COLUMN MUMMY -2, SE NA POSICAO PARA ONDE ELE VAI TIVER UMA CHAVE OU ARMADILHA
-*
-*
-*
-* */
+
+    /*ANTES DE MOVER FAZER UM IF PARA VER NA COOLUNA E NA LINHA DA MUMIA VER ARMADILHA ANTES DE COLOCAR A MUMIA = -2
+     * IF INIMIGO TEM ARMADILHA
+     *
+     * MATRIZ LINE MUMMY, COLUM MUMMY = 'A'
+     * ELSE NAO TEM ARMADLIHA LINE...='A'
+     *
+     * ANTES DE MOVER PARA  POS -2
+     *
+     * FAZER OUTRO IF SEPARADO DO DE CIMA
+     * IF NA MATRIZ LINE MUMY COLUMN MUMMY -2, SE NA POSICAO PARA ONDE ELE VAI TIVER UMA CHAVE OU ARMADILHA
+     *
+     *
+     *
+     * */
     public void moveRight() {
-       //char onTopOfHRight =matrix[lineHero][columnHero];
-       char onTopOfH =matrix[lineHero][columnHero];
+        //char onTopOfHRight =matrix[lineHero][columnHero];
         if (columnHero < 11) {
-           // matrix[lineHero][columnHero] = '.';
-           // matrix[lineHero][columnHero += 2] = 'H';
+            // matrix[lineHero][columnHero] = '.';
+            // matrix[lineHero][columnHero += 2] = 'H';
 
             matrix[lineHero][columnHero] = onTopOfH;
-            onTopOfH =  matrix[lineHero][columnHero+=2];
+            onTopOfH = matrix[lineHero][columnHero += 2];
             matrix[lineHero][columnHero] = 'H';
-            if (onTopOfH=='C'){
+            if (onTopOfH == 'C') {
                 for (int i = 0; i < matrix.length; i++) {
                     for (int j = 0; j < matrix.length; j++) {
-                        if (matrix[i][j]=='='){
-                            matrix[i][j]='_';
-                        }else
-                        if (matrix[i][j]=='_'){
-                            matrix[i][j]='=';
+                        if (matrix[i][j] == '=') {
+                            matrix[i][j] = '_';
+                        } else if (matrix[i][j] == '_') {
+                            matrix[i][j] = '=';
                         }
-                        if (matrix[i][j]=='"'){
-                            matrix[i][j]=')';
+                        if (matrix[i][j] == '"') {
+                            matrix[i][j] = ')';
                         }
-                        if (matrix[i][j]==')'){
-                            matrix[i][j]='"';
+                        if (matrix[i][j] == ')') {
+                            matrix[i][j] = '"';
                         }
 
                     }
@@ -234,30 +231,23 @@ public class MummyMazeState extends State implements Cloneable {
     }
 
     public void moveDown() {
-        //char onTopOfHDown =matrix[lineHero][columnHero];
-        char onTopOfH =matrix[lineHero][columnHero];
-
         if (lineHero < 11) {
-           // matrix[lineHero][columnHero] = '.';
-           // matrix[lineHero += 2][columnHero] = 'H';
-
             matrix[lineHero][columnHero] = onTopOfH;
-            onTopOfH =  matrix[lineHero+=2][columnHero];
+            onTopOfH = matrix[lineHero += 2][columnHero];
             matrix[lineHero][columnHero] = 'H';
-            if (onTopOfH=='C'){
+            if (onTopOfH == 'C') {
                 for (int i = 0; i < matrix.length; i++) {
                     for (int j = 0; j < matrix.length; j++) {
-                        if (matrix[i][j]=='='){
-                            matrix[i][j]='_';
-                        }else
-                        if (matrix[i][j]=='_'){
-                            matrix[i][j]='=';
+                        if (matrix[i][j] == '=') {
+                            matrix[i][j] = '_';
+                        } else if (matrix[i][j] == '_') {
+                            matrix[i][j] = '=';
                         }
-                        if (matrix[i][j]=='"'){
-                            matrix[i][j]=')';
+                        if (matrix[i][j] == '"') {
+                            matrix[i][j] = ')';
                         }
-                        if (matrix[i][j]==')'){
-                            matrix[i][j]='"';
+                        if (matrix[i][j] == ')') {
+                            matrix[i][j] = '"';
                         }
 
                     }
@@ -276,29 +266,27 @@ public class MummyMazeState extends State implements Cloneable {
 
     public void moveLeft() {
         //char onTopOfHLeft =matrix[lineHero][columnHero];
-        char onTopOfH =matrix[lineHero][columnHero];
 
         if (columnHero > 1) {
             //matrix[lineHero][columnHero] = '.';
-           // matrix[lineHero][columnHero -= 2] = 'H';
+            // matrix[lineHero][columnHero -= 2] = 'H';
 
             matrix[lineHero][columnHero] = onTopOfH;
-            onTopOfH =  matrix[lineHero][columnHero-=2];
+            onTopOfH = matrix[lineHero][columnHero -= 2];
             matrix[lineHero][columnHero] = 'H';
-            if (onTopOfH=='C'){
+            if (onTopOfH == 'C') {
                 for (int i = 0; i < matrix.length; i++) {
                     for (int j = 0; j < matrix.length; j++) {
-                        if (matrix[i][j]=='='){
-                            matrix[i][j]='_';
-                        }else
-                        if (matrix[i][j]=='_'){
-                            matrix[i][j]='=';
+                        if (matrix[i][j] == '=') {
+                            matrix[i][j] = '_';
+                        } else if (matrix[i][j] == '_') {
+                            matrix[i][j] = '=';
                         }
-                        if (matrix[i][j]=='"'){
-                            matrix[i][j]=')';
+                        if (matrix[i][j] == '"') {
+                            matrix[i][j] = ')';
                         }
-                        if (matrix[i][j]==')'){
-                            matrix[i][j]='"';
+                        if (matrix[i][j] == ')') {
+                            matrix[i][j] = '"';
                         }
 
                     }
@@ -313,6 +301,16 @@ public class MummyMazeState extends State implements Cloneable {
         moveInimigo();
     }
 
+    private int findEnemmy(int linha, int coluna) {
+        int posEnemy = 0;
+        for (int i = 0; i < enemyLinkedList.size(); i++) {
+            if (linha == enemyLinkedList.get(i).getLinha() && coluna == enemyLinkedList.get(i).getColuna()) {
+                posEnemy = i;
+            }
+        }
+
+        return posEnemy;
+    }
 
     private void moveInimigo() {
         //System.out.println("tamanho da lista mumias" + enemyLinkedList.size());
@@ -320,71 +318,119 @@ public class MummyMazeState extends State implements Cloneable {
         for (int i = 0; i < enemyLinkedList.size(); i++) {
             char onTopOf = enemyLinkedList.get(i).getOnTopOf();
 
-            System.out.println("aqui"+enemyLinkedList.get(i));
-            if (enemyLinkedList.get(i).getEnemyType()== 'M') {
+            System.out.println("aqui" + enemyLinkedList.get(i));
+            if (enemyLinkedList.get(i).getEnemyType() == 'M') {
                 mummyLine = enemyLinkedList.get(i).getLinha();
                 mummyColumn = enemyLinkedList.get(i).getColuna();
                 for (int j = 0; j < 2; j++) {
                     if (mummyColumn > columnHero) {
-                        if (matrix[mummyLine][mummyColumn - 1] == ' ') {
+                        if (matrix[mummyLine][mummyColumn - 1] == ' ' || matrix[mummyLine][mummyColumn - 1] == ')') {
                             matrix[mummyLine][mummyColumn] = onTopOf;/*  nesta linha ele vai colocar na matriz o que passou por cima anteriormente*/
-                            onTopOf = matrix[mummyLine][mummyColumn-=2];
+                            if (matrix[mummyLine][mummyColumn - 2] == 'M') {
+                                enemyLinkedList.remove(i);
+                                i--;
+                                continue;
+                            } else if (matrix[mummyLine][mummyColumn - 2] == 'E') {
+                                enemyLinkedList.remove(findEnemmy(mummyLine, mummyColumn - 2));
+                            }
+
+                            onTopOf = matrix[mummyLine][mummyColumn -= 2];
                             enemyLinkedList.get(i).setOnTopOf(onTopOf);
                             matrix[mummyLine][mummyColumn] = 'M';
                         } else if (mummyLine > lineHero) {
-                            if (matrix[mummyLine - 1][mummyColumn] == ' ') {
+                            if (matrix[mummyLine - 1][mummyColumn] == ' ' || matrix[mummyLine - 1][mummyColumn] == '_') {
                                 matrix[mummyLine][mummyColumn] = onTopOf;
-                                onTopOf = matrix[mummyLine-=2][mummyColumn];
+                                if (matrix[mummyLine - 2][mummyColumn] == 'M') {
+                                    enemyLinkedList.remove(i);
+                                    i--;
+                                    continue;
+                                } else if (matrix[mummyLine - 2][mummyColumn] == 'E') {
+                                    enemyLinkedList.remove(findEnemmy(mummyLine - 2, mummyColumn));
+                                }
+                                onTopOf = matrix[mummyLine -= 2][mummyColumn];
                                 enemyLinkedList.get(i).setOnTopOf(onTopOf);
                                 matrix[mummyLine][mummyColumn] = 'M';
                             }
                         } else if (mummyLine < lineHero) {
-                            if (matrix[mummyLine + 1][mummyColumn] == ' ') {
+                            if (matrix[mummyLine + 1][mummyColumn] == ' ' || matrix[mummyLine + 1][mummyColumn] == '_') {
                                 matrix[mummyLine][mummyColumn] = onTopOf;
-                                onTopOf = matrix[mummyLine+=2][mummyColumn];
+                                if (matrix[mummyLine + 2][mummyColumn] == 'M') {
+                                    enemyLinkedList.remove(i);
+                                    i--;
+                                    continue;
+                                } else if (matrix[mummyLine + 2][mummyColumn] == 'E') {
+                                    enemyLinkedList.remove(findEnemmy(mummyLine + 2, mummyColumn));
+                                }
+                                onTopOf = matrix[mummyLine += 2][mummyColumn];
                                 enemyLinkedList.get(i).setOnTopOf(onTopOf);
                                 matrix[mummyLine][mummyColumn] = 'M';
                             }
                         }
                     } else if (mummyColumn < columnHero) {
-                        if (matrix[mummyLine][mummyColumn + 1] == ' ') {
+                        if (matrix[mummyLine][mummyColumn + 1] == ' ' || matrix[mummyLine][mummyColumn + 1] == ')') {
                             matrix[mummyLine][mummyColumn] = onTopOf;
-                            onTopOf = matrix[mummyLine][mummyColumn+=2];
+                            if (matrix[mummyLine][mummyColumn + 2] == 'M') {
+                                enemyLinkedList.remove(i);
+                                i--;
+                                continue;
+                            }
+                            onTopOf = matrix[mummyLine][mummyColumn += 2];
                             enemyLinkedList.get(i).setOnTopOf(onTopOf);
                             matrix[mummyLine][mummyColumn] = 'M';
                         } else if (mummyLine > lineHero) {
-                            if (matrix[mummyLine - 1][mummyColumn] == ' ') {
+                            if (matrix[mummyLine - 1][mummyColumn] == ' ' || matrix[mummyLine - 1][mummyColumn] == '_') {
                                 matrix[mummyLine][mummyColumn] = onTopOf;
-                                onTopOf = matrix[mummyLine-=2][mummyColumn];
+                                if (matrix[mummyLine - 2][mummyColumn] == 'M') {
+                                    enemyLinkedList.remove(i);
+                                    i--;
+                                    continue;
+                                }
+                                onTopOf = matrix[mummyLine -= 2][mummyColumn];
                                 enemyLinkedList.get(i).setOnTopOf(onTopOf);
                                 matrix[mummyLine][mummyColumn] = 'M';
                             }
                         } else if (mummyLine < lineHero) {
-                            if (matrix[mummyLine + 1][mummyColumn] == ' ') {
+                            if (matrix[mummyLine + 1][mummyColumn] == ' ' || matrix[mummyLine + 1][mummyColumn] == '_') {
                                 matrix[mummyLine][mummyColumn] = onTopOf;
-                                onTopOf = matrix[mummyLine+=2][mummyColumn];
+                                if (matrix[mummyLine + 2][mummyColumn] == 'M') {
+                                    enemyLinkedList.remove(i);
+                                    i--;
+                                    continue;
+                                }
+                                onTopOf = matrix[mummyLine += 2][mummyColumn];
                                 enemyLinkedList.get(i).setOnTopOf(onTopOf);
                                 matrix[mummyLine][mummyColumn] = 'M';
                             }
                         }
 
-                    } else {
-                        if (mummyLine > lineHero) {
-                            if (matrix[mummyLine - 1][mummyColumn] == ' ') {
-                                matrix[mummyLine][mummyColumn] = onTopOf;
-                                onTopOf = matrix[mummyLine-=2][mummyColumn];
-                                enemyLinkedList.get(i).setOnTopOf(onTopOf);
-                                matrix[mummyLine][mummyColumn] = 'M';
+                    } else if (mummyLine > lineHero) {
+                        if (matrix[mummyLine - 1][mummyColumn] == ' ' || matrix[mummyLine - 1][mummyColumn] == '_') {
+                            matrix[mummyLine][mummyColumn] = onTopOf;
+                            if (matrix[mummyLine - 2][mummyColumn] == 'M') {
+                                enemyLinkedList.remove(i);
+                                i--;
+                                continue;
                             }
-                        } else if (mummyLine < lineHero) {
-                            if (matrix[mummyLine + 1][mummyColumn] == ' ') {
-                                matrix[mummyLine][mummyColumn] = onTopOf;
-                                onTopOf = matrix[mummyLine+=2][mummyColumn];
-                                enemyLinkedList.get(i).setOnTopOf(onTopOf);
-                                matrix[mummyLine][mummyColumn] = 'M';
+                            onTopOf = matrix[mummyLine -= 2][mummyColumn];
+                            enemyLinkedList.get(i).setOnTopOf(onTopOf);
+                            matrix[mummyLine][mummyColumn] = 'M';
+                        }
+                    } else if (mummyLine < lineHero) {
+                        if (matrix[mummyLine + 1][mummyColumn] == ' ' || matrix[mummyLine + 1][mummyColumn] == '_') {
+                            matrix[mummyLine][mummyColumn] = onTopOf;
+                            if (matrix[mummyLine + 2][mummyColumn] == 'M') {
+                                enemyLinkedList.remove(i);
+                                i--;
+                                continue;
                             }
+
+                            onTopOf = matrix[mummyLine += 2][mummyColumn];
+                            enemyLinkedList.get(i).setOnTopOf(onTopOf);
+                            matrix[mummyLine][mummyColumn] = 'M';
+
                         }
                     }
+
                     enemyLinkedList.get(i).setLinha(mummyLine);
                     enemyLinkedList.get(i).setColuna(mummyColumn);
                     if (matrix[lineHero][columnHero] == 'M') {
@@ -397,48 +443,48 @@ public class MummyMazeState extends State implements Cloneable {
             }
 
 
-            if (enemyLinkedList.get(i).getEnemyType()== 'V') {
+            if (enemyLinkedList.get(i).getEnemyType() == 'V') {
                 redMummyLine = enemyLinkedList.get(i).getLinha();
                 redmummycolumn = enemyLinkedList.get(i).getColuna();
                 for (int j = 0; j < 2; j++) {
                     if (redMummyLine > lineHero) {
-                        if (matrix[redMummyLine - 1][redmummycolumn] == ' ') {
+                        if (matrix[redMummyLine - 1][redmummycolumn] == ' ' || matrix[redMummyLine - 1][redmummycolumn] == '_') {
                             matrix[redMummyLine][redmummycolumn] = onTopOf;
-                            onTopOf = matrix[redMummyLine-=2][redmummycolumn];
+                            onTopOf = matrix[redMummyLine -= 2][redmummycolumn];
                             enemyLinkedList.get(i).setOnTopOf(onTopOf);
                             matrix[redMummyLine][redmummycolumn] = 'V';
                         } else if (redmummycolumn > columnHero) {
-                            if (matrix[redMummyLine][redmummycolumn - 1] == ' ') {
+                            if (matrix[redMummyLine][redmummycolumn - 1] == ' ' || matrix[redMummyLine][redmummycolumn - 1] == ')') {
                                 matrix[redMummyLine][redmummycolumn] = onTopOf;
-                                onTopOf = matrix[redMummyLine][redmummycolumn-=2];
+                                onTopOf = matrix[redMummyLine][redmummycolumn -= 2];
                                 enemyLinkedList.get(i).setOnTopOf(onTopOf);
                                 matrix[redMummyLine][redmummycolumn] = 'V';
                             }
                         } else if (redmummycolumn < columnHero) {
-                            if (matrix[redMummyLine][redmummycolumn + 1] == ' ') {
+                            if (matrix[redMummyLine][redmummycolumn + 1] == ' ' || matrix[redMummyLine][redmummycolumn + 1] == ')') {
                                 matrix[redMummyLine][redmummycolumn] = onTopOf;
-                                onTopOf = matrix[redMummyLine][redmummycolumn+=2];
+                                onTopOf = matrix[redMummyLine][redmummycolumn += 2];
                                 enemyLinkedList.get(i).setOnTopOf(onTopOf);
                                 matrix[redMummyLine][redmummycolumn] = 'V';
                             }
                         }
                     } else if (redMummyLine < lineHero) {
-                        if (matrix[redMummyLine + 1][redmummycolumn] == ' ') {
+                        if (matrix[redMummyLine + 1][redmummycolumn] == ' ' || matrix[redMummyLine + 1][redmummycolumn] == '_') {
                             matrix[redMummyLine][redmummycolumn] = onTopOf;
-                            onTopOf = matrix[redMummyLine+=2][redmummycolumn];
+                            onTopOf = matrix[redMummyLine += 2][redmummycolumn];
                             enemyLinkedList.get(i).setOnTopOf(onTopOf);
                             matrix[redMummyLine][redmummycolumn] = 'V';
                         } else if (redmummycolumn > columnHero) {
-                            if (matrix[redMummyLine][redmummycolumn - 1] == ' ') {
+                            if (matrix[redMummyLine][redmummycolumn - 1] == ' ' || matrix[redMummyLine][redmummycolumn - 1] == ')') {
                                 matrix[redMummyLine][redmummycolumn] = onTopOf;
-                                onTopOf = matrix[redMummyLine][redmummycolumn-=2];
+                                onTopOf = matrix[redMummyLine][redmummycolumn -= 2];
                                 enemyLinkedList.get(i).setOnTopOf(onTopOf);
                                 matrix[redMummyLine][redmummycolumn] = 'V';
                             }
                         } else if (redmummycolumn < columnHero) {
-                            if (matrix[redMummyLine][redmummycolumn + 1] == ' ') {
+                            if (matrix[redMummyLine][redmummycolumn + 1] == ' ' || matrix[redMummyLine][redmummycolumn + 1] == ')') {
                                 matrix[redMummyLine][redmummycolumn] = onTopOf;
-                                onTopOf = matrix[redMummyLine][redmummycolumn+=2];
+                                onTopOf = matrix[redMummyLine][redmummycolumn += 2];
                                 enemyLinkedList.get(i).setOnTopOf(onTopOf);
                                 matrix[redMummyLine][redmummycolumn] = 'V';
                             }
@@ -446,24 +492,24 @@ public class MummyMazeState extends State implements Cloneable {
 
                     } else {
                         if (redmummycolumn > columnHero) {
-                            if (matrix[redMummyLine][redmummycolumn - 1] == ' ') {
+                            if (matrix[redMummyLine][redmummycolumn - 1] == ' ' || matrix[redMummyLine][redmummycolumn - 1] == ')') {
                                 matrix[redMummyLine][redmummycolumn] = onTopOf;
-                                onTopOf = matrix[redMummyLine][redmummycolumn-=2];
+                                onTopOf = matrix[redMummyLine][redmummycolumn -= 2];
                                 enemyLinkedList.get(i).setOnTopOf(onTopOf);
                                 matrix[redMummyLine][redmummycolumn] = 'V';
                             }
                         } else if (redmummycolumn < columnHero) {
-                            if (matrix[redMummyLine][redmummycolumn + 1] == ' ') {
+                            if (matrix[redMummyLine][redmummycolumn + 1] == ' ' || matrix[redMummyLine][redmummycolumn + 1] == ')') {
                                 matrix[redMummyLine][redmummycolumn] = onTopOf;
-                                onTopOf = matrix[redMummyLine][redmummycolumn+=2];
+                                onTopOf = matrix[redMummyLine][redmummycolumn += 2];
                                 enemyLinkedList.get(i).setOnTopOf(onTopOf);
                                 matrix[redMummyLine][redmummycolumn] = 'V';
                             }
                         }
                     }
 
-                enemyLinkedList.get(i).setLinha(redMummyLine);
-                enemyLinkedList.get(i).setColuna(redmummycolumn);
+                    enemyLinkedList.get(i).setLinha(redMummyLine);
+                    enemyLinkedList.get(i).setColuna(redmummycolumn);
                     if (matrix[lineHero][columnHero] == 'V') {
                         lineHero = 0;
                         columnHero = 0;
@@ -472,81 +518,81 @@ public class MummyMazeState extends State implements Cloneable {
                     }
 
                 }
-            }//-----------------------------------------------
+            }///-----------------------------------------------*/
 
-            if (enemyLinkedList.get(i).getEnemyType() == 'E') {
+           if (enemyLinkedList.get(i).getEnemyType() == 'E') {
                 scorpionLine = enemyLinkedList.get(i).getLinha();
                 scorpionColumn = enemyLinkedList.get(i).getColuna();
-                    if (scorpionColumn > columnHero) {
-                        if (matrix[scorpionLine][scorpionColumn - 1] == ' ') {
+                if (scorpionColumn > columnHero) {
+                    if (matrix[scorpionLine][scorpionColumn - 1] == ' ' || matrix[scorpionLine][scorpionColumn - 1] == ')') {
+                        matrix[scorpionLine][scorpionColumn] = onTopOf;
+                        onTopOf = matrix[scorpionLine][scorpionColumn -= 2];
+                        enemyLinkedList.get(i).setOnTopOf(onTopOf);
+                        matrix[scorpionLine][scorpionColumn] = 'E';
+
+                    } else if (scorpionLine > lineHero) {
+                        if (matrix[scorpionLine - 1][scorpionColumn] == ' ' || matrix[scorpionLine - 1][scorpionColumn] == '_') {
                             matrix[scorpionLine][scorpionColumn] = onTopOf;
-                            onTopOf = matrix[scorpionLine][scorpionColumn-=2];
+                            onTopOf = matrix[scorpionLine -= 2][scorpionColumn];
                             enemyLinkedList.get(i).setOnTopOf(onTopOf);
                             matrix[scorpionLine][scorpionColumn] = 'E';
-
-                        } else if (scorpionLine > lineHero) {
-                            if (matrix[scorpionLine - 1][scorpionColumn] == ' ') {
-                                matrix[scorpionLine][scorpionColumn] = onTopOf;
-                                onTopOf = matrix[scorpionLine-=2][scorpionColumn];
-                                enemyLinkedList.get(i).setOnTopOf(onTopOf);
-                                matrix[scorpionLine][scorpionColumn] = 'E';
-                            }
-                        } else if (scorpionLine < lineHero) {
-                            if (matrix[scorpionLine + 1][scorpionColumn] == ' ') {
-                                matrix[scorpionLine][scorpionColumn] = onTopOf;
-                                onTopOf = matrix[scorpionLine+=2][scorpionColumn];
-                                enemyLinkedList.get(i).setOnTopOf(onTopOf);
-                                matrix[scorpionLine][scorpionColumn] = 'E';
-                            }
                         }
-                    } else if (scorpionColumn < columnHero) {
-                        if (matrix[scorpionLine][scorpionColumn + 1] == ' ') {
+                    } else if (scorpionLine < lineHero) {
+                        if (matrix[scorpionLine + 1][scorpionColumn] == ' ' || matrix[scorpionLine + 1][scorpionColumn] == '_') {
                             matrix[scorpionLine][scorpionColumn] = onTopOf;
-                            onTopOf = matrix[scorpionLine][scorpionColumn+=2];
+                            onTopOf = matrix[scorpionLine += 2][scorpionColumn];
                             enemyLinkedList.get(i).setOnTopOf(onTopOf);
                             matrix[scorpionLine][scorpionColumn] = 'E';
-                        } else if (scorpionLine > lineHero) {
-                            if (matrix[scorpionLine - 1][scorpionColumn] == ' ') {
-                                matrix[scorpionLine][scorpionColumn] = onTopOf;
-                                onTopOf = matrix[scorpionLine-=2][scorpionColumn];
-                                enemyLinkedList.get(i).setOnTopOf(onTopOf);
-                                matrix[scorpionLine][scorpionColumn] = 'E';
-                            }
-                        } else {
-                            if (matrix[scorpionLine + 1][scorpionColumn] == ' ') {
-                                matrix[scorpionLine][scorpionColumn] = onTopOf;
-                                onTopOf = matrix[scorpionLine+=2][scorpionColumn];
-                                enemyLinkedList.get(i).setOnTopOf(onTopOf);
-                                matrix[scorpionLine][scorpionColumn] = 'E';
-                            }
-                        }
-
-                    } else {
-                        if (scorpionLine > lineHero) {
-                            if (matrix[scorpionLine - 1][scorpionColumn] == ' ') {
-                                matrix[scorpionLine][scorpionColumn] = onTopOf;
-                                onTopOf = matrix[scorpionLine-=2][scorpionColumn];
-                                enemyLinkedList.get(i).setOnTopOf(onTopOf);
-                                matrix[scorpionLine][scorpionColumn] = 'E';
-                            }
-                        } else if (scorpionLine < lineHero) {
-                            if (matrix[scorpionLine + 1][scorpionColumn] == ' ') {
-                                matrix[scorpionLine][scorpionColumn] = onTopOf;
-                                onTopOf = matrix[scorpionLine+=2][scorpionColumn];
-                                enemyLinkedList.get(i).setOnTopOf(onTopOf);
-                                matrix[scorpionLine][scorpionColumn] = 'E';
-                            }
                         }
                     }
+                } else if (scorpionColumn < columnHero) {
+                    if (matrix[scorpionLine][scorpionColumn + 1] == ' ' || matrix[scorpionLine][scorpionColumn + 1] == ')') {
+                        matrix[scorpionLine][scorpionColumn] = onTopOf;
+                        onTopOf = matrix[scorpionLine][scorpionColumn += 2];
+                        enemyLinkedList.get(i).setOnTopOf(onTopOf);
+                        matrix[scorpionLine][scorpionColumn] = 'E';
+                    } else if (scorpionLine > lineHero) {
+                        if (matrix[scorpionLine - 1][scorpionColumn] == ' ' || matrix[scorpionLine - 1][scorpionColumn] == '_') {
+                            matrix[scorpionLine][scorpionColumn] = onTopOf;
+                            onTopOf = matrix[scorpionLine -= 2][scorpionColumn];
+                            enemyLinkedList.get(i).setOnTopOf(onTopOf);
+                            matrix[scorpionLine][scorpionColumn] = 'E';
+                        }
+                    } else {
+                        if (matrix[scorpionLine + 1][scorpionColumn] == ' ' || matrix[scorpionLine + 1][scorpionColumn] == '_') {
+                            matrix[scorpionLine][scorpionColumn] = onTopOf;
+                            onTopOf = matrix[scorpionLine += 2][scorpionColumn];
+                            enemyLinkedList.get(i).setOnTopOf(onTopOf);
+                            matrix[scorpionLine][scorpionColumn] = 'E';
+                        }
+                    }
+
+                } else {
+                    if (scorpionLine > lineHero) {
+                        if (matrix[scorpionLine - 1][scorpionColumn] == ' ' || matrix[scorpionLine - 1][scorpionColumn] == '_') {
+                            matrix[scorpionLine][scorpionColumn] = onTopOf;
+                            onTopOf = matrix[scorpionLine -= 2][scorpionColumn];
+                            enemyLinkedList.get(i).setOnTopOf(onTopOf);
+                            matrix[scorpionLine][scorpionColumn] = 'E';
+                        }
+                    } else if (scorpionLine < lineHero) {
+                        if (matrix[scorpionLine + 1][scorpionColumn] == ' ' || matrix[scorpionLine + 1][scorpionColumn] == '_') {
+                            matrix[scorpionLine][scorpionColumn] = onTopOf;
+                            onTopOf = matrix[scorpionLine += 2][scorpionColumn];
+                            enemyLinkedList.get(i).setOnTopOf(onTopOf);
+                            matrix[scorpionLine][scorpionColumn] = 'E';
+                        }
+                    }
+                }
 
                 enemyLinkedList.get(i).setLinha(scorpionLine);
                 enemyLinkedList.get(i).setColuna(scorpionColumn);
-                    // System.out.println(this);
-                    if (matrix[lineHero][columnHero] == 'E') {
-                        lineHero = 0;
-                        columnHero = 0;
-                        return;
-                    }
+                // System.out.println(this);
+                if (matrix[lineHero][columnHero] == 'E') {
+                    lineHero = 0;
+                    columnHero = 0;
+                    return;
+                }
             }
         }
     }
@@ -630,7 +676,7 @@ public class MummyMazeState extends State implements Cloneable {
 
     @Override
     public MummyMazeState clone() {
-        return new MummyMazeState(matrix,enemyLinkedList,lineHero,columnHero,lineExit,columnExit);
+        return new MummyMazeState(matrix, enemyLinkedList, lineHero, columnHero, onTopOfH, lineExit, columnExit);
 
 
     }
