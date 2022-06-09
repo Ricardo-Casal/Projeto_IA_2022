@@ -11,6 +11,6 @@ public class HeuristicTileDistance extends Heuristic<MummyMazeProblem, MummyMaze
     
     @Override
     public String toString(){
-        return "Tiles distance to final position";
+        return "Hero Distance to Exit";
     }
 }

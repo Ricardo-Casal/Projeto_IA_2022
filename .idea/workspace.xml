@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7a091b84-42a2-4966-937e-8409e68ac26b" name="Default" comment="escorpiao corrigido, falta fazer metodo para matar quando o as mumias entram numa casa de escorpiao">
+    <list default="true" id="7a091b84-42a2-4966-937e-8409e68ac26b" name="Default" comment="escorpiao corrigido&#10;continua a falar metodo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/eightpuzzle/HeuristicTileDistance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/eightpuzzle/HeuristicTileDistance.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/eightpuzzle/MummyMazeState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/eightpuzzle/MummyMazeState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/showSolution/GameArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/showSolution/GameArea.java" afterDir="false" />
     </list>
@@ -47,7 +48,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="settings.space" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -72,6 +73,11 @@
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="StructuralSearchPlugin">
+    <searchConfiguration name="Unnamed" created="1654794472760" text="eur" recursive="true" caseInsensitive="false" type="JAVA" pattern_context="default" scope_type="PROJECT" scope_descriptor="" history="1">
+      <constraint name="__context__" within="" contains="" />
+    </searchConfiguration>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -134,7 +140,14 @@
       <workItem from="1653635479729" duration="17000" />
       <workItem from="1653643338987" duration="2959000" />
       <workItem from="1654170111357" duration="3495000" />
-      <workItem from="1654239900845" duration="17321000" />
+      <workItem from="1654239900845" duration="17467000" />
+      <workItem from="1654356765650" duration="181000" />
+      <workItem from="1654679701789" duration="3353000" />
+      <workItem from="1654683826111" duration="10087000" />
+      <workItem from="1654711514912" duration="773000" />
+      <workItem from="1654786146843" duration="1363000" />
+      <workItem from="1654793227292" duration="87000" />
+      <workItem from="1654793344891" duration="1264000" />
     </task>
     <task id="LOCAL-00001" summary="Commit com boneco a mexer">
       <created>1651225131130</created>
@@ -227,7 +240,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654258493450</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="escorpiao corrigido&#10;continua a falar metodo">
+      <created>1654258968285</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1654258968285</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -257,7 +277,8 @@
     <MESSAGE value="abre porta fecha porta" />
     <MESSAGE value="abre tudo mexe tudo todos abrem portas,morre tudo, falta matar escorpiao" />
     <MESSAGE value="escorpiao corrigido, falta fazer metodo para matar quando o as mumias entram numa casa de escorpiao" />
-    <option name="LAST_COMMIT_MESSAGE" value="escorpiao corrigido, falta fazer metodo para matar quando o as mumias entram numa casa de escorpiao" />
+    <MESSAGE value="escorpiao corrigido&#10;continua a falar metodo" />
+    <option name="LAST_COMMIT_MESSAGE" value="escorpiao corrigido&#10;continua a falar metodo" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
