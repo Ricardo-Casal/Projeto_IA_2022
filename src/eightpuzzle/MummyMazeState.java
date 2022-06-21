@@ -9,9 +9,7 @@ import java.util.LinkedList;
 
 public class MummyMazeState extends State implements Cloneable {
 
-    public static final int SIZE = 3;
     private final char[][] matrix;
-    private LinkedList<String> lista = new LinkedList<String>();
     private int lineHero;
     private int columnHero;
     private int lineExit;
@@ -22,11 +20,7 @@ public class MummyMazeState extends State implements Cloneable {
     private int redmummycolumn;
     private int scorpionLine;
     private int scorpionColumn;
-    private int linhaArmadilha;
-    private int colunaArmadilha;
     private LinkedList<Enemy> enemyLinkedList;
-    private LinkedList<Hero> heroLinkedList;
-    private Hero hero;
     private char onTopOfH;
     int cont =0;
 
@@ -37,7 +31,6 @@ public class MummyMazeState extends State implements Cloneable {
         this.columnHero = columnHero;
         this.lineExit = lineExit;
         this.columnExit = columnExit;
-        heroLinkedList = new LinkedList<>();
         this.onTopOfH = onTopOfH;
 
 
@@ -94,6 +87,13 @@ public class MummyMazeState extends State implements Cloneable {
         if (columnHero < 11 && matrix[lineHero][columnHero + 1] == ')' && matrix[lineHero][columnHero + 2] == '.')
             return true;
         return false;
+
+        //do fibonacci function
+
+
+
+
+
     }
 
 
@@ -239,8 +239,6 @@ public class MummyMazeState extends State implements Cloneable {
     }
 
     private int findEnemmy(int linha, int coluna) {
-
-
         for (int i = 0; i < enemyLinkedList.size(); i++) {
             if (linha == enemyLinkedList.get(i).getLinha() && coluna == enemyLinkedList.get(i).getColuna()) {
 
@@ -761,12 +759,30 @@ public class MummyMazeState extends State implements Cloneable {
     }
 
 
-    public double computeTilesOutOfPlace() {
-        double h = 0;
+
+
+
+
+
+
+
+
+
+
+    public double computeEnemyDistanceToHero() {
+        double h ;
+        double r ;
+        double m;
+        double s;
+        m=Math.abs(lineHero+mummyLine)+Math.abs(columnHero+mummyColumn);
+        r=Math.abs(lineHero+redMummyLine)+Math.abs(columnHero+redmummycolumn);
+        s=Math.abs(lineHero+scorpionLine)+Math.abs(columnHero+scorpionColumn);
+        h=m+r+s;
+
         return h;
     }
 
-    public double computeTileDistances() {
+    public double computeHeroDistanceToExit() {
         double h = 0;
         h= Math.abs(lineHero-lineExit)+Math.abs(columnHero-columnExit);
 
@@ -801,16 +817,7 @@ public class MummyMazeState extends State implements Cloneable {
         return mummyColumn;
     }
 
-    public int getTileValue(int line, int column) {
-        if (!isValidPosition(line, column)) {
-            throw new IndexOutOfBoundsException("Invalid position!");
-        }
-        return matrix[line][column];
-    }
 
-    public boolean isValidPosition(int line, int column) {
-        return line >= 0 && line < matrix.length && column >= 0 && column < matrix[0].length;
-    }
 
     @Override
     public boolean equals(Object other) {

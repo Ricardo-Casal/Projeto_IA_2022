@@ -15,54 +15,20 @@ public class MummyMazeAgent extends Agent<MummyMazeState> {
     private int columnExit;
     private Enemy enemy;
     private LinkedList<Enemy> enemyLinkedList;
-    private Hero armadilha;
-    private LinkedList<Hero> armadilhaLinkedList;
+    private int lineHero;
     private int linhaArmadilha;
     private int colunaArmadilha;
+    private int linhaPorta;
     private int linhaChave;
     private int colunaChave;
-    private int linhaPorta;
     private int colunaPorta;
 
-    private int lineHero;
-
-    public int getColumnHero() {
-        return columnHero;
-    }
-
-    public int getLineExit() {
-        return lineExit;
-    }
-
-    public int getColumnExit() {
-        return columnExit;
-    }
-
-    public Enemy getEnemy() {
-        return enemy;
-    }
-
-    public LinkedList<Enemy> getEnemyLinkedList() {
-        return enemyLinkedList;
-    }
-
-    public int getLinhaArmadilha() {
-        return linhaArmadilha;
-    }
-
-    public int getColunaArmadilha() {
-        return colunaArmadilha;
-    }
-
-    public int getLineHero() {
-        return lineHero;
-    }
 
     public MummyMazeAgent(MummyMazeState environemt) {
         super(environemt);
         initialEnvironment = (MummyMazeState) environemt.clone();
-        heuristics.add(new HeuristicTileDistance());
-        heuristics.add(new HeuristicTilesOutOfPlace());
+        heuristics.add(new HeuristicHeroDistanceToExit());
+        heuristics.add(new HeuristicEnemyDistanceToHero());
         heuristic = heuristics.get(0);
     }
 
@@ -76,7 +42,6 @@ public class MummyMazeAgent extends Agent<MummyMazeState> {
         Scanner scanner = new Scanner(file);
         char[][] charArray = new char[13][13];
         enemyLinkedList = new LinkedList<>();
-        armadilhaLinkedList = new LinkedList<>();
         int i = 0;
         while (scanner.hasNextLine()) {
             charArray[i] = scanner.nextLine().toCharArray();
@@ -112,8 +77,6 @@ public class MummyMazeAgent extends Agent<MummyMazeState> {
                 if (charArray[j][k] == 'A') {
                     linhaArmadilha = j;
                     colunaArmadilha = k;
-                    armadilha = new Hero(j,k);
-                    armadilhaLinkedList.add(armadilha);
 
 
                 }

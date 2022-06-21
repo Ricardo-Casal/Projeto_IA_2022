@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7a091b84-42a2-4966-937e-8409e68ac26b" name="Default" comment="escorpiao corrigido&#10;continua a falar metodo">
+    <list default="true" id="7a091b84-42a2-4966-937e-8409e68ac26b" name="Default" comment="projeto feito falta heuristicas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/eightpuzzle/HeuristicTileDistance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/eightpuzzle/HeuristicTileDistance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/eightpuzzle/HeuristicTileDistance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/eightpuzzle/HeuristicHeroDistanceToExit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/eightpuzzle/HeuristicTilesOutOfPlace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/eightpuzzle/HeuristicEnemyDistanceToHero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/eightpuzzle/MummyMazeAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/eightpuzzle/MummyMazeAgent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/eightpuzzle/MummyMazeState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/eightpuzzle/MummyMazeState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/showSolution/GameArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/showSolution/GameArea.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +148,12 @@
       <workItem from="1654711514912" duration="773000" />
       <workItem from="1654786146843" duration="1363000" />
       <workItem from="1654793227292" duration="87000" />
-      <workItem from="1654793344891" duration="1264000" />
+      <workItem from="1654793344891" duration="2201000" />
+      <workItem from="1655119988322" duration="2876000" />
+      <workItem from="1655169069789" duration="723000" />
+      <workItem from="1655572412097" duration="613000" />
+      <workItem from="1655573053871" duration="559000" />
+      <workItem from="1655794258427" duration="10759000" />
     </task>
     <task id="LOCAL-00001" summary="Commit com boneco a mexer">
       <created>1651225131130</created>
@@ -247,7 +253,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654258968285</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="projeto feito falta heuristicas">
+      <created>1654797449507</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1654797449507</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -278,7 +291,8 @@
     <MESSAGE value="abre tudo mexe tudo todos abrem portas,morre tudo, falta matar escorpiao" />
     <MESSAGE value="escorpiao corrigido, falta fazer metodo para matar quando o as mumias entram numa casa de escorpiao" />
     <MESSAGE value="escorpiao corrigido&#10;continua a falar metodo" />
-    <option name="LAST_COMMIT_MESSAGE" value="escorpiao corrigido&#10;continua a falar metodo" />
+    <MESSAGE value="projeto feito falta heuristicas" />
+    <option name="LAST_COMMIT_MESSAGE" value="projeto feito falta heuristicas" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

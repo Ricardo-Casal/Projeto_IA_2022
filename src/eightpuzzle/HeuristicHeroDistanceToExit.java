@@ -2,11 +2,11 @@ package eightpuzzle;
 
 import agent.Heuristic;
 
-public class HeuristicTileDistance extends Heuristic<MummyMazeProblem, MummyMazeState>{
+public class HeuristicHeroDistanceToExit extends Heuristic<MummyMazeProblem, MummyMazeState>{
 
     @Override
     public double compute(MummyMazeState state){
-        return state.computeTileDistances();
+        return state.computeHeroDistanceToExit();
     }
     
     @Override
